@@ -32,11 +32,11 @@ func main() {
 	var port int
 	var multicore, reuseport bool
 
-	// Example command: go run echo.go --port 9000 --multicore=true --reuseport=true
-	flag.IntVar(&port, "port", 9000, "--port 9000")
+	// Example command: go run echo.go --port 8080 --multicore=true --reuseport=true
+	flag.IntVar(&port, "port", 8080, "--port 8080")
 	flag.BoolVar(&multicore, "multicore", false, "--multicore true")
 	flag.BoolVar(&reuseport, "reuseport", false, "--reuseport true")
 	flag.Parse()
 	echo := new(echoServer)
-	log.Fatal(gnet.Run(echo, fmt.Sprintf("tcp://:%d", port), gnet.WithMulticore(multicore), gnet.WithReusePort(reuseport)))
+	log.Println(gnet.Run(echo, fmt.Sprintf("tcp://:%d", port), gnet.WithMulticore(multicore), gnet.WithReusePort(reuseport)))
 }
